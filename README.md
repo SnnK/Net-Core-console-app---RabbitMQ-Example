@@ -1,0 +1,1 @@
+# Net-Core-console-app---RabbitMQ-Example
