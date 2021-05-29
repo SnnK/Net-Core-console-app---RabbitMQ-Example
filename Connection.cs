@@ -6,7 +6,7 @@ namespace RabbitConsole
     {
         public IConnection Connect()
         {
-            ConnectionFactory connectionFactory = new ConnectionFactory()
+            ConnectionFactory connectionFactory = new()
             {
                 HostName = "localhost",
                 UserName = "admin",

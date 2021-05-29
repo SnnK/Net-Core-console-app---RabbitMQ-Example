@@ -15,20 +15,17 @@ namespace RabbitConsole
 
         public void Send(User user)
         {
-            using (var connection = _connection.Connect())
-            {
-                using (var channel = connection.CreateModel())
-                {
-                    channel.QueueDeclare(queue: "User", durable: false, exclusive: false, autoDelete: false, arguments: null);
+            using var connection = _connection.Connect();
+            using var channel = connection.CreateModel();
 
-                    var userData = JsonConvert.SerializeObject(user);
+            channel.QueueDeclare(queue: "User", durable: false, exclusive: false, autoDelete: false, arguments: null);
 
-                    var body = Encoding.UTF8.GetBytes(userData);
+            var userData = JsonConvert.SerializeObject(user);
 
-                    Console.WriteLine("Message sent");
-                    channel.BasicPublish(exchange: "", routingKey: "User", basicProperties: null, body: body);
-                }
-            }
+            var body = Encoding.UTF8.GetBytes(userData);
+
+            Console.WriteLine("Message sent");
+            channel.BasicPublish(exchange: "", routingKey: "User", basicProperties: null, body: body);
         }
     }
 }

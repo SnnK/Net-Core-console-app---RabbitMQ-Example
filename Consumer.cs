@@ -32,7 +32,7 @@ namespace RabbitConsole
             {
                 string message = Encoding.UTF8.GetString(ea.Body.ToArray());
 
-                User userData = JsonConvert.DeserializeObject<User>(message);
+                var userData = JsonConvert.DeserializeObject<User>(message);
 
                 Console.WriteLine($"Received message: {userData.Name} {userData.Email}");
             };

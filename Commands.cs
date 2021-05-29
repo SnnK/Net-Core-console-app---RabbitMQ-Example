@@ -1,5 +1,4 @@
-﻿
-namespace RabbitConsole
+﻿namespace RabbitConsole
 {
     public enum Commands
     {
